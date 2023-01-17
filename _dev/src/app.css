@@ -1,0 +1,167 @@
+/* TailwindCSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* TailwindCSS */
+
+/* Imports */
+@import "styles/_fonts.css";
+/* Imports */
+
+/* Global CSS */
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+body._lock {
+  overflow: hidden;
+}
+/* Global CSS */
+
+/* TailwindCSS layers */
+@layer base {
+  .row {
+    @apply flex flex-wrap items-center;
+  }
+  .row > * {
+    @apply max-w-full px-4 py-4;
+  }
+  .flex-zero {
+    flex: 0 0 auto;
+  }
+  .col-1\/2 {
+    @apply w-1/2 flex-zero;
+  }
+  .col-1\/3 {
+    @apply w-4/12 flex-zero;
+  }
+  .col-1\/6 {
+    @apply w-1/6 flex-zero;
+  }
+  .col-2\/3 {
+    @apply w-8/12 flex-zero;
+  }
+}
+
+@layer components {
+  .title {
+    @apply font-bold text-[2.75rem] capitalize;
+  }
+  .title-second {
+    @apply text-[2.25rem];
+  }
+  .menu__link {
+    @apply text-gray-300 text-lg;
+  }
+  .menu__link.active {
+    @apply text-white;
+  }
+  .button {
+    @apply inline-block font-bold text-base text-center uppercase py-3 px-6 rounded-md border-transparent border-solid border;
+  }
+  .button-primary {
+    @apply bg-white text-blue-600;
+  }
+  .button-secondary {
+    @apply bg-blue-600 text-white;
+  }
+  .tabs-link {
+    @apply max-md:w-full capitalize transition duration-300;
+  }
+  .tabs-link.active {
+    @apply button-secondary;
+  }
+  .tabs-content {
+    animation: fadeEffect 1s;
+  }
+  .tabs-content p {
+    @apply first:mb-4 text-base text-gray-400;
+  }
+  .service-widget {
+    @apply px-[30px] py-[40px] border border-solid border-gray-300 rounded-lg transition-all duration-300 ease-out
+    hover:shadow-lg hover:shadow-gray-400;
+  }
+  .service-widget:hover .service-widget__icon {
+    @apply bg-blue-600 text-white;
+  }
+  .service-widget:hover .service-widget__icon svg {
+    @apply fill-white;
+  }
+  .service-widget__icon {
+    @apply w-[75px] h-[75px] rounded-[50%] mb-6 bg-white border-2 border-solid border-blue-600 flex items-center justify-center text-blue-600 text-4xl transition-all duration-300 ease-out;
+  }
+  .service-widget__icon svg {
+    @apply fill-blue-600 transition-all duration-300 ease-out;
+  }
+}
+/* TailwindCSS layers */
+
+/* Keyframes */
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Keyframes */
+
+/* Media */
+@media (max-width: 1024px) {
+  .menu__icon {
+    @apply z-[5] block relative w-[30px] h-[18px] cursor-pointer;
+  }
+  .menu__icon span,
+  .menu__icon::after,
+  .menu__icon::before {
+    @apply left-0 absolute h-[10%] w-full transition-all duration-300 ease-out bg-white;
+  }
+  .menu__icon::after,
+  .menu__icon::before {
+    content: "";
+  }
+  .menu__icon span {
+    @apply top-1/2;
+    transform: scale(1) translate(0, -50%);
+  }
+  .menu__icon::after {
+    @apply bottom-0;
+  }
+  .menu__icon::before {
+    @apply top-0;
+  }
+  .menu__icon._active span {
+    transform: scale(0) translate(0, -50%);
+  }
+  .menu__icon._active::before {
+    @apply top-1/2;
+    transform: rotate(-45deg) translate(0, -50%);
+  }
+  .menu__icon._active::after {
+    @apply bottom-1/2;
+    transform: rotate(45deg) translate(0, 50%);
+  }
+  .menu__body {
+    @apply fixed top-0 left-[-100%] w-full h-full bg-gray-800 bg-opacity-80 overflow-auto
+    transition-[left] duration-300 ease-out px-[30px] pt-[100px] pb-[30px];
+  }
+  .menu__body._active {
+    @apply left-0;
+  }
+  .menu__list::before {
+    content: "";
+    @apply bg-blue-600 fixed w-full top-0 left-0 h-[70px];
+  }
+  .menu__list > li {
+    @apply mb-[30px] last:mb-0;
+  }
+  .menu__link {
+    @apply text-4xl text-gray-200 font-bold;
+  }
+}
+/* Media */
